@@ -1,4 +1,4 @@
-// Code taken from my implementation of a segmented sieve of eratosthenes
+// Code taken from my implementation of a sieve of eratosthenes
 // https://github.com/k3dr1/segmented-prime-sieve
 
 #include <iostream>
@@ -33,40 +33,6 @@ std::vector<int> standard_sieve(int n) {
 	for (int i = 0; i < n; i++) {
 		if (A[i] == true) {
 			found_primes.push_back(i);
-		}
-	}
-	return found_primes;
-}
-
-std::vector<int> segmented_sieve(int n) {
-	long long int delta = (int)std::sqrt(n);
-	long long int m = delta*2 - 1;
-	std::vector<int> found_primes = standard_sieve(delta);
-
-	// m is the topmost value of the segment
-	// meaning the segment is [m-delta+1,m]
-	// number k has index k-(m-delta+1) = k-m+delta-1
-	// number at index i has value m-delta+1+i
-	for (; m < n; m += delta) {
-		// faster than std::vector<bool>, although non-standard g++ supports variable length arrays 
-		// as an extension, an alternative to this is using "new char[delta]" to allocate an array on the heap
-		char A[delta] = {};
-		for (int i = 0; i < delta; i++) A[i] = true;
-
-		int i = 0;
-		while (found_primes[i] <= (int)std::sqrt(m)) {
-			int p = found_primes[i];
-			// finds the index corresponding to the smallest multiple of p in the segment,
-			// and then incrementally mark all the multiples as non-prime
-			for (int multiple = (p - ((m-delta+1)%p))%p; multiple < delta; multiple += p) {
-				A[multiple] = false;
-			}
-			i++;
-		}
-		for (int i = 0; i < delta; i++) {
-			if (A[i] == true) {
-				found_primes.push_back(m-delta+1+i);
-			}
 		}
 	}
 	return found_primes;
