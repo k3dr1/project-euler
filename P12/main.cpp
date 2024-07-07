@@ -28,7 +28,7 @@ std::unordered_map<int,int> decompose(long long int n, const std::vector<int>& p
 int main() {
 	std::vector<int> primes{};
 
-	std::ifstream f("primes.txt");
+	std::ifstream f("../common/primes.txt");
 	std::string line;
 	while (std::getline(f, line, '\n')) {
 		primes.push_back(std::stoi(line));

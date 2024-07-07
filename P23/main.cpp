@@ -43,7 +43,7 @@ int get_sum_of_proper_divisors(int n, const std::vector<int>& primes) {
 
 int main() {
 	std::vector<int> primes{};
-	std::ifstream f("primes.txt");
+	std::ifstream f("../common/primes.txt");
 	std::string line;
 	while(std::getline(f, line)) {primes.push_back(std::stoi(line));}
 
