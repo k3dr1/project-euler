@@ -1,7 +1,4 @@
-#include <algorithm>
 #include <iostream>
-#include <ranges>
-#include <vector>
 
 using ll = long long;
 
