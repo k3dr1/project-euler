@@ -28,7 +28,6 @@ ull digit_factorial(ull x)
         return 362880;
     default: {
         std::cerr << "Invalid arg\n";
-        *(int*)0 = 1;
         return -1;
     }
     }
@@ -49,7 +48,7 @@ int main()
 {
     using std::views::iota;
     auto sum { 0 };
-    for (auto&& n : iota(10, 9'999'999)) {
+    for (auto&& n : iota(10, 10'000'000)) {
         if (is_equal_factorial_sum(n)) {
             std::cout << n << '\n';
             sum += n;
