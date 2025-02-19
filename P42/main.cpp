@@ -2,10 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 using ll = long long;
 using std::ranges::fold_left;
